@@ -33,8 +33,8 @@ async def automation(sender):
                 if LOGGING:
                     await event_log(sender, "AUTOMATION", "Command: `{}`\nIssued to: `{}`".format(replyStr, sender.sender_id))
 
-DESCRIPTION = "Private taylored module for my own private use. You know what it does."
-USAGE = "It's all based in config file, so yeah... If you have this, you probably know how it works anyway."
+DESCRIPTION = "Private taylored module for my own private use. If you are using it, you know what it does.\n\n**ALERT**: This module is not suitable for human consumption! Please refrain from using it unless you know what you are doing!"
+USAGE = "It's all based in config file, so yeah... If you have this, you probably know how it works anyway.\n\n**ALERT**: This module is not suitable for human consumption! Please refrain from using it unless you know what you are doing!"
 
 MODULE_DESC.update({basename(__file__)[:-3]: DESCRIPTION})
 MODULE_DICT.update({basename(__file__)[:-3]: USAGE})
