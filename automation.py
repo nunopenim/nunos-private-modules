@@ -6,8 +6,9 @@
 # compliance with the DBADPL-B (So use it freely, but if you make a 
 # shitload of cash, buy me a beer or a pizza. Thanks.
 
-from userbot import tgclient, VERSION, PROJECT, MODULE_DESC, MODULE_DICT
+from userbot import tgclient, VERSION, PROJECT, MODULE_DESC, MODULE_DICT, LOGGING
 from userbot.config import AutomationConfig as cfg
+from userbot.include.aux_funcs import event_log
 from telethon.events import NewMessage
 from os.path import basename
 
@@ -29,6 +30,8 @@ async def automation(sender):
                 data = x[1]
                 replyStr = command + " " + data + " " + AUTOMATOR_REPLY
                 await sender.reply(replyStr)
+                if LOGGING:
+                    await event_log(sender, "AUTOMATION", "The command `{}` has been successfully executed in the sender `{}`".format(replyStr, sender.sender_id))
 
 DESCRIPTION = "Private taylored module for my own private use. You know what it does."
 USAGE = "It's all based in config file, so yeah... If you have this, you probably know how it works anyway."
