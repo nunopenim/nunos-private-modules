@@ -1,2 +1,7 @@
 # nunos-private-modules
-My own private community repo for HyperUBot
+
+> Licensed under DBADPL-B
+
+I am no one to tell you not to use them, tbh I don't really care if you do or not.
+
+I won't answer to issues or anything, figure them yourself, it's private for a reason.
