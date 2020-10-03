@@ -127,7 +127,7 @@ USAGE = "`.gban` <optional: user identifier> \
         \nUsage: Globally unbans a user in the specified Marie based bots. \
         \n\n`.gkick` <optional: user identifier> \
         \nUsage: Globally kicks a user in the specified Marie based bots. \
-        **ALERT**: This module is not suitable for human consumption! Please refrain from using it unless you know what you are doing."
+        **ALERT**: This module is not suitable for human consumption! Please refrain from using it unless you know what you are doing!"
 
 
 MODULE_DESC.update({basename(__file__)[:-3]: DESC})
