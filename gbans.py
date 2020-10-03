@@ -6,10 +6,11 @@
 # compliance with the DBADPL-B (So use it freely, but if you make a
 # shitload of cash, buy me a beer or a pizza. Thanks.
 
-from userbot import tgclient
+from userbot import tgclient, MODULE_DESC, MODULE_DICT
 from telethon.events import NewMessage
 from userbot.include.aux_funcs import fetch_user
 from userbot.config import GbanConfigs as cfg
+from os.path import basename
 
 GBAN = cfg.GBAN
 GBAN_BOT_IDS = cfg.GBAN_BOT_IDS
@@ -118,3 +119,16 @@ async def ungkicker(request):
         response += i + ': ' + x.text.replace("**", "").replace("`", "").replace("tg://user?id=", "") + '\n\n'
     await request.edit("`" + response + "`")
     return
+
+DESC = "nunos-private-repo modules are not for human consumption! This is the global bans module, which will redirect the gban command to group management bots (based on Marie), gbanning people on multiple bots at the same time."
+USAGE = "`.gban` <optional: user identifier> \
+        \nUsage: Globally bans a user in the specified Marie based bots. \
+        \n\n`.ungban` <optional: user identifier> \
+        \nUsage: Globally unbans a user in the specified Marie based bots. \
+        \n\n`.gkick` <optional: user identifier> \
+        \nUsage: Globally kicks a user in the specified Marie based bots. \
+        **ALERT**: This module is not suitable for human consumption! Please refrain from using it unless you know what you are doing."
+
+
+MODULE_DESC.update({basename(__file__)[:-3]: DESC})
+MODULE_DICT.update({basename(__file__)[:-3]: USAGE})
