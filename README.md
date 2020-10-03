@@ -1,5 +1,7 @@
 # nunos-private-modules
 
+Nope, you won't get leaks here.
+
 > Licensed under DBADPL-B
 
 I am no one to tell you not to use them, tbh I don't really care if you do or not.
