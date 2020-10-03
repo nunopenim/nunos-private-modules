@@ -31,7 +31,7 @@ async def automation(sender):
                 replyStr = command + " " + data + " " + AUTOMATOR_REPLY
                 await sender.reply(replyStr)
                 if LOGGING:
-                    await event_log(sender, "AUTOMATION", "The command `{}` has been successfully executed in the sender `{}`".format(replyStr, sender.sender_id))
+                    await event_log(sender, "AUTOMATION", "\nCommand: `{}`\nIssued to: `{}`".format(replyStr, sender.sender_id))
 
 DESCRIPTION = "Private taylored module for my own private use. You know what it does."
 USAGE = "It's all based in config file, so yeah... If you have this, you probably know how it works anyway."
