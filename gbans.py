@@ -50,7 +50,7 @@ async def gbanner(request):
             if x:
                 response += i + ': ' + x.text.replace("**", "").replace("`", "").replace("tg://user?id=", "") + '\n\n'
             else:
-                response += i + "took too much time to respond, likely it is offline!"
+                response += i + " took too much time to respond, likely it is offline!"
     await request.edit("`" + response + "`")
     return
 
@@ -88,7 +88,7 @@ async def ungbanner(request):
             if x:
                 response += i + ': ' + x.text.replace("**", "").replace("`", "").replace("tg://user?id=", "") + '\n\n'
             else:
-                response += i + "took too much time to respond, likely it is offline!"
+                response += i + " took too much time to respond, likely it is offline!"
     await request.edit("`" + response + "`")
     return
 
@@ -126,7 +126,7 @@ async def ungkicker(request):
             if x:
                 response += i + ': ' + x.text.replace("**", "").replace("`", "").replace("tg://user?id=", "") + '\n\n'
             else:
-                response += i + "took too much time to respond, likely it is offline!"
+                response += i + " took too much time to respond, likely it is offline!"
     await request.edit("`" + response + "`")
     return
 
