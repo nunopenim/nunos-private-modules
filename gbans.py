@@ -6,11 +6,12 @@
 # compliance with the DBADPL-B (So use it freely, but if you make a
 # shitload of cash, buy me a beer or a pizza. Thanks.
 
-from userbot import tgclient, MODULE_DESC, MODULE_DICT
+from userbot import tgclient, MODULE_DESC, MODULE_DICT, log
 from telethon.events import NewMessage
 from userbot.include.aux_funcs import fetch_user
 from userbot.config import GbanConfigs as cfg
 from os.path import basename
+from asyncio.exceptions import TimeoutError as Timeout
 
 GBAN = cfg.GBAN
 GBAN_BOT_IDS = cfg.GBAN_BOT_IDS
@@ -41,7 +42,11 @@ async def gbanner(request):
     for i in GBAN_BOT_IDS:
         async with tgclient.conversation(i) as conv:
             await conv.send_message(gbantext)
-            x = await conv.get_response()
+            x = None
+            try:
+                x = await conv.get_response()
+            except Timeout:
+                log.warning("@" + i + " took too much to respond, likely it is offline!")
             if x:
                 pass
             else:
@@ -76,7 +81,11 @@ async def ungbanner(request):
     for i in GBAN_BOT_IDS:
         async with tgclient.conversation(i) as conv:
             await conv.send_message(gbantext)
-            x = await conv.get_response()
+            x = None
+            try:
+                x = await conv.get_response()
+            except Timeout:
+                log.warning("@" + i + " took too much to respond, likely it is offline!")
             if x:
                 pass
             else:
@@ -111,7 +120,11 @@ async def ungkicker(request):
     for i in GBAN_BOT_IDS:
         async with tgclient.conversation(i) as conv:
             await conv.send_message(gbantext)
-            x = await conv.get_response()
+            x = None
+            try:
+                x = await conv.get_response()
+            except Timeout:
+                log.warning("@" + i + " took too much to respond, likely it is offline!")
             if x:
                 pass
             else:
