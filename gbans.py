@@ -48,10 +48,9 @@ async def gbanner(request):
             except Timeout:
                 log.warning("@" + i + " took too much to respond, likely it is offline!")
             if x:
-                pass
+                response += i + ': ' + x.text.replace("**", "").replace("`", "").replace("tg://user?id=", "") + '\n\n'
             else:
-                x = i + '  didn\'t respond'
-        response += i + ': ' + x.text.replace("**", "").replace("`", "").replace("tg://user?id=", "") + '\n\n'
+                response += i + "took too much time to respond, likely it is offline!"
     await request.edit("`" + response + "`")
     return
 
@@ -87,10 +86,9 @@ async def ungbanner(request):
             except Timeout:
                 log.warning("@" + i + " took too much to respond, likely it is offline!")
             if x:
-                pass
+                response += i + ': ' + x.text.replace("**", "").replace("`", "").replace("tg://user?id=", "") + '\n\n'
             else:
-                x = i + '  didn\'t respond'
-        response += i + ': ' + x.text.replace("**", "").replace("`", "").replace("tg://user?id=", "") + '\n\n'
+                response += i + "took too much time to respond, likely it is offline!"
     await request.edit("`" + response + "`")
     return
 
@@ -126,10 +124,9 @@ async def ungkicker(request):
             except Timeout:
                 log.warning("@" + i + " took too much to respond, likely it is offline!")
             if x:
-                pass
+                response += i + ': ' + x.text.replace("**", "").replace("`", "").replace("tg://user?id=", "") + '\n\n'
             else:
-                x = i + '  didn\'t respond'
-        response += i + ': ' + x.text.replace("**", "").replace("`", "").replace("tg://user?id=", "") + '\n\n'
+                response += i + "took too much time to respond, likely it is offline!"
     await request.edit("`" + response + "`")
     return
 
