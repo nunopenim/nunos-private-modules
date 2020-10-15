@@ -12,26 +12,23 @@ from userbot.include.aux_funcs import event_log
 from telethon.events import NewMessage
 from os.path import basename
 
-AUTOMATION_ENABLED = cfg.AUTOMATION_ENABLED
-AUTOMATION_SENDERS = cfg.AUTOMATION_SENDERS
-AUTOMATION_COMMANDS = cfg.AUTOMATION_COMMANDS
-AUTOMATION_TRIGGERS = cfg.AUTOMATION_TRIGGERS
+CASBAN_ENABLED = cfg.CASBAN_ENABLED
+CASBAN_SENDERS = cfg.CASBAN_SENDERS
 
 AUTOMATOR_REPLY = "Automation System powered by " + PROJECT + " v." + VERSION
 
 @tgclient.on(NewMessage(incoming=True))
-async def automation(sender):
-    if AUTOMATION_ENABLED and sender.is_private and (sender.sender_id in AUTOMATION_SENDERS):
-        for trigger in AUTOMATION_TRIGGERS:
-            if trigger in sender.raw_text:
-                commandId = AUTOMATION_TRIGGERS.index(trigger)
-                command = AUTOMATION_COMMANDS[commandId]
-                x = sender.raw_text.split(trigger)
-                data = x[1]
-                replyStr = command + " " + data + " " + AUTOMATOR_REPLY
-                await sender.reply(replyStr)
-                if LOGGING:
-                    await event_log(sender, "AUTOMATION", "Command: `{}`\nIssued to: `{}`".format(replyStr, sender.sender_id))
+async def auto_cas_ban(sender):
+    trigger = "CAS Banned user detected: "
+    if CASBAN_ENABLED and sender.is_private and (sender.sender_id in CASBAN_SENDERS):
+        if trigger in sender.raw_text:
+            command = "/gban"
+            x = sender.raw_text.split(trigger)
+            data = x[1]
+            replyStr = command + " " + data + " " + AUTOMATOR_REPLY
+            await sender.reply(replyStr)
+            if LOGGING:
+                await event_log(sender, "AUTOMATION", "Automatic CAS Ban\nIssued to: `{}`".format(sender.sender_id))
 
 DESCRIPTION = "Private taylored module for my own private use. If you are using it, you know what it does.\n\n**ALERT**: This module is not suitable for human consumption! Please refrain from using it unless you know what you are doing!"
 USAGE = "It's all based in config file, so yeah... If you have this, you probably know how it works anyway.\n\n**ALERT**: This module is not suitable for human consumption! Please refrain from using it unless you know what you are doing!"
