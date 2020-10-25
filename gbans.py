@@ -6,12 +6,14 @@
 # compliance with the DBADPL-B (So use it freely, but if you make a
 # shitload of cash, buy me a beer or a pizza. Thanks.
 
-from userbot import tgclient, MODULE_DESC, MODULE_DICT, log
+from userbot import tgclient, MODULE_DESC, MODULE_DICT, log, MODULE_INFO
 from telethon.events import NewMessage
-from userbot.include.aux_funcs import fetch_user
+from userbot.include.aux_funcs import fetch_user, module_info
 from userbot.config import GbanConfigs as cfg
 from os.path import basename
 from asyncio.exceptions import TimeoutError as Timeout
+
+VERSION = "1.0.0"
 
 GBAN = cfg.GBAN
 GBAN_BOT_IDS = cfg.GBAN_BOT_IDS
@@ -142,3 +144,4 @@ USAGE = "`.gban` <optional: user identifier> \
 
 MODULE_DESC.update({basename(__file__)[:-3]: DESC})
 MODULE_DICT.update({basename(__file__)[:-3]: USAGE})
+MODULE_INFO.update({basename(__file__)[:-3]: module_info(name="Global Bans Utility", version=VERSION)})
