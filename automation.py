@@ -12,12 +12,12 @@ from userbot.include.aux_funcs import event_log, module_info
 from telethon.events import NewMessage
 from os.path import basename
 
-VERSION = "1.0.0"
+AUTVERSION = "1.0.1"
 
 CASBAN_ENABLED = cfg.CASBAN_ENABLED
 CASBAN_SENDERS = cfg.CASBAN_SENDERS
 
-AUTOMATOR_REPLY = "Automation System powered by " + PROJECT + " v." + VERSION
+AUTOMATOR_REPLY = "AUTOMATION v." + AUTVERSION + " System powered by " + PROJECT + " v." + VERSION
 
 @tgclient.on(NewMessage(incoming=True))
 async def auto_cas_ban(sender):
@@ -37,4 +37,4 @@ USAGE = "It's all based in config file, so yeah... If you have this, you probabl
 
 MODULE_DESC.update({basename(__file__)[:-3]: DESCRIPTION})
 MODULE_DICT.update({basename(__file__)[:-3]: USAGE})
-MODULE_INFO.update({basename(__file__)[:-3]: module_info(name="Automation", version=VERSION)})
+MODULE_INFO.update({basename(__file__)[:-3]: module_info(name="Automation", version=AUTVERSION)})
