@@ -13,7 +13,7 @@ from userbot.config import GbanConfigs as cfg
 from os.path import basename
 from asyncio.exceptions import TimeoutError as Timeout
 
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 
 GBAN = cfg.GBAN
 GBAN_BOT_IDS = cfg.GBAN_BOT_IDS
@@ -86,11 +86,11 @@ async def ungbanner(request):
             try:
                 x = await conv.get_response()
             except Timeout:
-                log.warning("@" + i + " took too much to respond, likely it is offline!")
+                log.warning("@" + i + " took too much to respond, likely it is offline!\n")
             if x:
                 response += i + ': ' + x.text.replace("**", "").replace("`", "").replace("tg://user?id=", "") + '\n\n'
             else:
-                response += i + " took too much time to respond, likely it is offline!"
+                response += i + " took too much time to respond, likely it is offline!\n"
     await request.edit("`" + response + "`")
     return
 
@@ -124,11 +124,11 @@ async def ungkicker(request):
             try:
                 x = await conv.get_response()
             except Timeout:
-                log.warning("@" + i + " took too much to respond, likely it is offline!")
+                log.warning("@" + i + " took too much to respond, likely it is offline!\n")
             if x:
                 response += i + ': ' + x.text.replace("**", "").replace("`", "").replace("tg://user?id=", "") + '\n\n'
             else:
-                response += i + " took too much time to respond, likely it is offline!"
+                response += i + " took too much time to respond, likely it is offline!\n"
     await request.edit("`" + response + "`")
     return
 
