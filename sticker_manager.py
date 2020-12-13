@@ -88,7 +88,7 @@ async def clone(args):
             packnick = f"@{user.username}'s kang pack Vol.{pack}"
             cmd = '/newpack'
             file = io.BytesIO()
-
+            print(photo)
             if not is_anim:
                 image = await resize_photo(photo)
                 file.name = "sticker.png"
