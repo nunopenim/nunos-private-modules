@@ -1,10 +1,10 @@
+# Copyright 2020 githubcatw @github
 # Copyright 2020 nunopenim @github
 #
-# Licensed under the DBADPL-B (Don't Be A Dick Public License B), v1.0
+# Licensed under the DBBPL
 #
 # You may not use this file or any of the content within it, unless in
-# compliance with the DBADPL-B (So use it freely, but if you make a
-# shitload of cash, buy me a beer or a pizza. Thanks.
+# compliance with the DBBPL
 
 from userbot import tgclient, MODULE_DESC, MODULE_DICT, MODULE_INFO
 from userbot.include.aux_funcs import module_info
@@ -18,22 +18,11 @@ from os import remove
 from PIL import Image
 from telethon.tl.types import DocumentAttributeFilename, MessageMediaPhoto, DocumentAttributeSticker
 
-KANGING_STR = [
-    "Using Witchery to kang this sticker...",
-    "Plagiarising hehe...",
-    "Inviting this sticker over to my pack...",
-    "Kanging this sticker...",
-    "Hey that's a nice sticker!\nMind if I kang?!..",
-    "hehe me stel ur stikér\nhehe.",
-    "Ay look over there (☉｡☉)!→\nWhile I kang this...",
-    "Roses are red violets are blue, kanging this sticker so my pacc looks cool",
-    "Imprisoning this sticker...",
-    "Mr.Steal Your Sticker is stealing this sticker... ",
-]
+CLONE_STR = ["Cloning the sticker"]
 
 
-@tgclient.on(NewMessage(outgoing=True, pattern="^\.kang"))
-async def kang(args):
+@tgclient.on(NewMessage(outgoing=True, pattern="^\.clone"))
+async def clone(args):
     if not args.text[0].isalpha() and args.text[0] in ("."):
         user = await tgclient.get_me()
         if not user.username:
@@ -46,11 +35,11 @@ async def kang(args):
 
         if message and message.media:
             if isinstance(message.media, MessageMediaPhoto):
-                await args.edit(f"`{random.choice(KANGING_STR)}`")
+                await args.edit(f"`{random.choice(CLONE_STR)}`")
                 photo = io.BytesIO()
                 photo = await tgclient.download_media(message.photo, photo)
             elif "image" in message.media.document.mime_type.split('/'):
-                await args.edit(f"`{random.choice(KANGING_STR)}`")
+                await args.edit(f"`{random.choice(CLONE_STR)}`")
                 photo = io.BytesIO()
                 await tgclient.download_file(message.media.document, photo)
                 if (DocumentAttributeFilename(file_name='sticker.webp') in
@@ -58,7 +47,7 @@ async def kang(args):
                     emoji = message.media.document.attributes[1].alt
                     emojibypass = True
             elif "tgsticker" in message.media.document.mime_type:
-                await args.edit(f"`{random.choice(KANGING_STR)}`")
+                await args.edit(f"`{random.choice(CLONE_STR)}`")
                 await tgclient.download_file(message.media.document,
                                         'AnimatedSticker.tgs')
 
@@ -265,16 +254,16 @@ async def resize_photo(photo):
 
     return image
 
-DESC = "Sticker Management Module"
+DESC = "Sticker Management Module - Allows you to clone or add existing stickers"
 
-USG = "`.kang`\
-    \nUsage: Reply .kang to a sticker or an image to kang it to your userbot pack.\
-    \n\n`.kang [emoji('s)]`\
-    \nUsage: Works just like .kang but uses the emoji('s) you picked.\
-    \n\n`.kang [number]`\
-    \nUsage: Kang's the sticker/image to the specified pack but uses 🤔 as emoji.\
-    \n\n`.kang [emoji('s)] [number]`\
-    \nUsage: Kang's the sticker/image to the specified pack and uses the emoji('s) you picked."
+USG = "`.clone`\
+    \nUsage: Reply .kang to a sticker or an image to add it to your userbot pack.\
+    \n\n`.clone [emoji('s)]`\
+    \nUsage: Works just like .clone but uses the emoji you picked.\
+    \n\n`.clone [number]`\
+    \nUsage: Add's the sticker/image to the specified pack but uses 🤔 as emoji.\
+    \n\n`.clone [emoji('s)] [number]`\
+    \nUsage: Add's the sticker/image to the specified pack and uses the emoji('s) you picked."
 
 MODULE_DESC.update({basename(__file__)[:-3]:DESC})
 MODULE_DICT.update({basename(__file__)[:-3]:USG})
