@@ -267,4 +267,4 @@ USG = "`.clone`\
 
 MODULE_DESC.update({basename(__file__)[:-3]:DESC})
 MODULE_DICT.update({basename(__file__)[:-3]:USG})
-MODULE_INFO.update({basename(__file__)[:-3]: module_info(name='Sticker Manager', version='1.0.0')})
+MODULE_INFO.update({basename(__file__)[:-3]: module_info(name='Sticker Manager', version='1.0.0-debug')})
