@@ -10,7 +10,7 @@ from userbot import PROJECT
 from userbot.sysutils.configuration import getConfig
 from userbot.version import VERSION
 from userbot.config import AutomationConfig as cfg
-from userbot.include.aux_funcs import event_log, module_info
+from userbot.include.aux_funcs import event_log
 from userbot.sysutils.registration import register_cmd_usage, register_module_desc, register_module_info
 from userbot.sysutils.event_handler import EventHandler
 
