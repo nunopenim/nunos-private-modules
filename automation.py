@@ -6,8 +6,9 @@
 # compliance with the DBADPL-B (So use it freely, but if you make a 
 # shitload of cash, buy me a beer or a pizza. Thanks.
 
-from userbot import tgclient, VERSION, PROJECT, MODULE_DESC, MODULE_DICT, MODULE_INFO
+from userbot import tgclient, PROJECT, MODULE_DESC, MODULE_DICT, MODULE_INFO
 from userbot.sysutils.configuration import getConfig
+from userbot.version import VERSION
 from userbot.config import AutomationConfig as cfg
 from userbot.include.aux_funcs import event_log, module_info
 from telethon.events import NewMessage
