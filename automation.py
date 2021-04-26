@@ -12,11 +12,9 @@ from userbot.version import VERSION
 from userbot.config import AutomationConfig as cfg
 from userbot.include.aux_funcs import event_log
 from userbot.sysutils.registration import register_cmd_usage, register_module_desc, register_module_info
-from userbot.sysutils.event_handler import EventHandler
-from logging import getLogger
+from telethon.events import NewMessage
+from userbot import tgclient
 
-log = getLogger(__name__)
-ehandler = EventHandler(log)
 LOGGING = getConfig("LOGGING")
 
 
@@ -27,7 +25,7 @@ CASBAN_SENDERS = cfg.CASBAN_SENDERS
 
 AUTOMATOR_REPLY = "AUTOMATION v." + AUTVERSION + " System powered by " + PROJECT + " v." + VERSION
 
-@ehandler.on(incoming=True)
+@tgclient.on(NewMessage(incoming=True))
 async def auto_cas_ban(sender):
     trigger = "CAS Banned user detected: "
     if CASBAN_ENABLED and sender.is_private and (sender.sender_id in CASBAN_SENDERS):
