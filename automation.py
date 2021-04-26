@@ -18,7 +18,7 @@ from userbot import tgclient
 LOGGING = getConfig("LOGGING")
 
 
-AUTVERSION = "2.1.0"
+AUTVERSION = "2.0.0"
 
 CASBAN_ENABLED = cfg.CASBAN_ENABLED
 CASBAN_SENDERS = cfg.CASBAN_SENDERS
